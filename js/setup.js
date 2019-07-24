@@ -16,30 +16,30 @@ var similarWizardTemplate = document.getElementById('similar-wizard-template')
 
 var getRandomElement = function (arr) {
     var randomElement = Math.floor(Math.random() * arr.length);
-    console.log(randomElement);
-    return randomElement;
+    var randomWizardElement = arr[randomElement];
+    return randomWizardElement;
 };
 
 var wizards = [
     {
-        name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)] + WIZARDS_LAST_NAMES[getRandomElement(WIZARDS_LAST_NAMES)],
-        coatColor: coatColor[getRandomElement(coatColor)],
-        eyesColor: eyesColor[getRandomElement(eyesColor)]
+        name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
+        coatColor: getRandomElement(coatColor),
+        eyesColor: getRandomElement(eyesColor)
     },
     {
-        name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)] + WIZARDS_LAST_NAMES[getRandomElement(WIZARDS_LAST_NAMES)],
-        coatColor: coatColor[getRandomElement(coatColor)],
-        eyesColor: eyesColor[getRandomElement(eyesColor)]
+        name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
+        coatColor: getRandomElement(coatColor),
+        eyesColor: getRandomElement(eyesColor)
     },
     {
-        name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)] + WIZARDS_LAST_NAMES[getRandomElement(WIZARDS_LAST_NAMES)],
-        coatColor: coatColor[getRandomElement(coatColor)],
-        eyesColor: eyesColor[getRandomElement(eyesColor)]
+        name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
+        coatColor: getRandomElement(coatColor),
+        eyesColor: getRandomElement(eyesColor)
     },
     {
-        name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)] + WIZARDS_LAST_NAMES[getRandomElement(WIZARDS_LAST_NAMES)],
-        coatColor: coatColor[getRandomElement(coatColor)],
-        eyesColor: eyesColor[getRandomElement(eyesColor)]
+        name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
+        coatColor: getRandomElement(coatColor),
+        eyesColor: getRandomElement(eyesColor)
     }
 ];
 
