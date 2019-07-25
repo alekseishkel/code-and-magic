@@ -8,7 +8,7 @@ var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
-
+var userNameInput = setup.querySelector('.setup-user-name');
 var similarListElement = document.querySelector('.setup-similar-list');
 
 var similarWizardTemplate = document.getElementById('similar-wizard-template')
@@ -70,5 +70,17 @@ setupOpen.addEventListener('click', function() {
 
 setupClose.addEventListener('click', function () {
   setup.classList.add('hidden');
+});
+
+userNameInput.addEventListener('invalid', function() {
+    if(userNameInput.validity.tooShort) {
+        userNameInput.setCustomValidity('Введите имя, состоящее, минимум, из 2 символов');
+    } else if (userNameInput.validity.tooLong) {
+        userNameInput.setCustomValidity('Введите имя, состоящее от 2 до 25 симвовлов');
+    } else if (userNameInput.validity.valueMissing) {
+        userNameInput.setCustomValidity('Поле не должно быть пустым');
+    } else {
+        userNameInput.setCustomValidity('');
+    }
 });
 
