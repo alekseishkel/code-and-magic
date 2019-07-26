@@ -15,7 +15,8 @@ var similarWizardTemplate = document.getElementById('similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
-
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;   
 
 var getRandomElement = function (arr) {
   var randomElement = Math.floor(Math.random() * arr.length);
@@ -64,23 +65,51 @@ similarListElement.appendChild(fragment);
 
 setup.querySelector('.setup-similar').classList.remove('hidden');
 
-setupOpen.addEventListener('click', function() {
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+}; 
+
+var openPopup = function () {
   setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
 });
 
 setupClose.addEventListener('click', function () {
-  setup.classList.add('hidden');
+  closePopup();
 });
 
-userNameInput.addEventListener('invalid', function() {
-    if(userNameInput.validity.tooShort) {
-        userNameInput.setCustomValidity('Введите имя, состоящее, минимум, из 2 символов');
-    } else if (userNameInput.validity.tooLong) {
-        userNameInput.setCustomValidity('Введите имя, состоящее от 2 до 25 симвовлов');
-    } else if (userNameInput.validity.valueMissing) {
-        userNameInput.setCustomValidity('Поле не должно быть пустым');
-    } else {
-        userNameInput.setCustomValidity('');
-    }
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Введите имя, состоящее, минимум, из 2 символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Введите имя, состоящее от 2 до 25 симвовлов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Поле не должно быть пустым');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
 });
 
