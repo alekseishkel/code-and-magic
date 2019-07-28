@@ -77,6 +77,9 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
+  if (userNameInput.focus()) {
+
+  };
   setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
@@ -84,6 +87,8 @@ var closePopup = function () {
 setupOpen.addEventListener('click', function () {
   openPopup();
 });
+
+
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
