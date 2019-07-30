@@ -1,9 +1,14 @@
 'use strict'
 
 var WIZARD_NAMES = ['Иван ', 'Хуан-Себастьян ', 'Мария ', 'Кристоф ', 'Виктор ', 'Юлия ', 'Люпита ', 'Вашингтон '];
-var WIZARDS_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var coatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var WIZARD_COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var WIZARD_EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_FIREBALL_COLOR = ['#ee4830','#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+var wizardCoat = document.querySelector('.wizard-coat');
+var wizardEyes = document.querySelector('.wizard-eyes');
+var wizardFireball = document.querySelector('.setup-fireball');
 
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
@@ -26,24 +31,24 @@ var getRandomElement = function (arr) {
 
 var wizards = [
   {
-    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
-    coatColor: getRandomElement(coatColor),
-    eyesColor: getRandomElement(eyesColor)
+    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARD_LAST_NAMES),
+    coatColor: getRandomElement(WIZARD_COAT_COLOR),
+    eyesColor: getRandomElement(WIZARD_EYES_COLOR)
   },
   {
-    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
-    coatColor: getRandomElement(coatColor),
-    eyesColor: getRandomElement(eyesColor)
+    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARD_LAST_NAMES),
+    coatColor: getRandomElement(WIZARD_COAT_COLOR),
+    eyesColor: getRandomElement(WIZARD_EYES_COLOR)
   },
   {
-    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
-    coatColor: getRandomElement(coatColor),
-    eyesColor: getRandomElement(eyesColor)
+    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARD_LAST_NAMES),
+    coatColor: getRandomElement(WIZARD_COAT_COLOR),
+    eyesColor: getRandomElement(WIZARD_EYES_COLOR)
   },
   {
-    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARDS_LAST_NAMES),
-    coatColor: getRandomElement(coatColor),
-    eyesColor: getRandomElement(eyesColor)
+    name: getRandomElement(WIZARD_NAMES) + getRandomElement(WIZARD_LAST_NAMES),
+    coatColor: getRandomElement(WIZARD_COAT_COLOR),
+    eyesColor: getRandomElement(WIZARD_EYES_COLOR)
   }
 ];
 
@@ -66,9 +71,11 @@ similarListElement.appendChild(fragment);
 setup.querySelector('.setup-similar').classList.remove('hidden');
 
 var onPopupEscPress = function (evt) {
+
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
+  
 }; 
 
 var openPopup = function () {
@@ -77,9 +84,6 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
-  if (userNameInput.focus()) {
-
-  };
   setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
@@ -87,8 +91,6 @@ var closePopup = function () {
 setupOpen.addEventListener('click', function () {
   openPopup();
 });
-
-
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
@@ -104,6 +106,19 @@ setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
+});
+
+wizardCoat.addEventListener('click', function() {
+  wizardCoat.style.fill = getRandomElement(WIZARD_COAT_COLOR);
+  
+});
+
+wizardEyes.addEventListener('click', function() {
+  wizardEyes.style.fill = getRandomElement(WIZARD_EYES_COLOR);
+});
+
+wizardFireball.addEventListener('click', function () {
+  wizardFireball.style.backgroundColor = getRandomElement(WIZARD_FIREBALL_COLOR);
 });
 
 userNameInput.addEventListener('invalid', function () {
