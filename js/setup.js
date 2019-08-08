@@ -75,12 +75,11 @@ similarListElement.appendChild(fragment);
 
 setup.querySelector('.setup-similar').classList.remove('hidden');
 
-var onPopupEscPress = function (evt) {
 
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
-
 };
 
 var openPopup = function () {
@@ -112,6 +111,59 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+
+var dialogHandler = setup.querySelector('.setup-user-pic');
+
+dialogHandler.addEventListener('mousedown', function (evt) {
+  evt.preventDefault;
+
+  var startCoordinats = {
+    x: evt.clientX,
+    y: evt.clientY
+  };
+
+  var dragged = false;
+
+  var onMouseMove = function (moveEvt) {
+    moveEvt.preventDefault();
+    dragged = true;
+
+    var shift = {
+      x: moveEvt.clientX - startCoordinats.x,
+      y: moveEvt.clientY - startCoordinats.y
+    };
+
+    startCoordinats = {
+      x: moveEvt.clientX,
+      y: moveEvt.clientY
+    };
+
+    setup.style.left = (setup.offsetLeft + shift.x) + 'px';
+    setup.style.top = (setup.offsetTop + shift.y) + 'px';
+  };
+
+  var onMouseUp = function (upEvt) {
+    upEvt.preventDefault;
+
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+
+    if (dragged) {
+      var onClickPreventHandler = function (evt) {
+        evt.preventDefault();
+        dialogHandler.removeEventListener('click', onClickPreventHandler);
+      };
+      dialogHandler.addEventListener('click', onClickPreventHandler);
+    }
+  };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+
+});
+
+
+
 
 wizardCoat.addEventListener('click', function () {
   var memoryWizardCoatColor = getRandomElement(WIZARD_COAT_COLOR);
@@ -145,4 +197,6 @@ userNameInput.addEventListener('invalid', function () {
     userNameInput.setCustomValidity('');
   }
 });
+
+
 
