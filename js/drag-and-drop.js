@@ -6,11 +6,11 @@
   dialogHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault;
 
-    var startCoordinats = {
+    window.startCoordinats = {
       x: evt.clientX,
       y: evt.clientY
     };
-
+    
     var dragged = false;
 
     var onMouseMove = function (moveEvt) {
@@ -18,11 +18,11 @@
       dragged = true;
 
       var shift = {
-        x: moveEvt.clientX - startCoordinats.x,
-        y: moveEvt.clientY - startCoordinats.y
+        x: moveEvt.clientX - window.startCoordinats.x,
+        y: moveEvt.clientY - window.startCoordinats.y
       };
 
-      startCoordinats = {
+      window.startCoordinats = {
         x: moveEvt.clientX,
         y: moveEvt.clientY
       };

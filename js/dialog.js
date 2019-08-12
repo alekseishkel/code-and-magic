@@ -24,14 +24,19 @@
   var closePopup = function () {
     window.setup.classList.add('hidden');
 
-    window.setup.style.left = '50%';
-    window.setup.style.top = '80px';
+    window.setup.style.left = window.setupCoordinats.x;
+    window.setup.style.top = window.setupCoordinats.y;
 
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
   setupOpen.addEventListener('click', function () {
     openPopup();
+
+    window.setupCoordinats = {
+      x: window.setup.style.left,
+      y: window.setup.style.top
+    };
   });
 
   setupOpen.addEventListener('keydown', function (evt) {
