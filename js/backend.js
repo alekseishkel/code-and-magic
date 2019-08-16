@@ -8,7 +8,7 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      if (xhr.response === 200) {
+      if (xhr.status === 200) {
         onLoad(xhr.response);
         console.log(xhr.response);
       } else {
@@ -32,7 +32,7 @@
 })();
 
 (function () {
-  var URL = 'https://js.dump.academy/code-nd-magick/data';
+  var URL = 'https://js.dump.academy/code-and-magick/data';
 
   window.load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
