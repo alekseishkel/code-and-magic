@@ -24,7 +24,7 @@
       onError('Превышено время ожидания, которорое составило: ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000;
+    xhr.timeout = 30000;
 
     xhr.open('POST', URL);
     xhr.send(data);
@@ -74,7 +74,7 @@
       onError('Превышено время ожидания, которорое составило: ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000;
+    xhr.timeout = 30000;
 
     xhr.send();
   };
