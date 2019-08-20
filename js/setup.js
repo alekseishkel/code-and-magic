@@ -20,23 +20,23 @@
   };
 
   wizardCoat.addEventListener('click', function () {
-    var memoryWizardCoatColor = getRandomElement(WIZARD_COAT_COLOR);
+    window.coatColor = getRandomElement(WIZARD_COAT_COLOR);
 
-    wizardCoat.style.fill = memoryWizardCoatColor;
-    inputCoatColor.value = memoryWizardCoatColor;
+    wizardCoat.style.fill = window.coatColor;
+    inputCoatColor.value = window.coatColor;
   });
 
   wizardEyes.addEventListener('click', function () {
-    var memoryWizardEyesColor = getRandomElement(WIZARD_EYES_COLOR);
+    window.eyesColor = getRandomElement(WIZARD_EYES_COLOR);
 
-    wizardEyes.style.fill = memoryWizardEyesColor;
-    inputEyesColor.value = memoryWizardEyesColor;
+    wizardEyes.style.fill = window.eyesColor;
+    inputEyesColor.value = window.eyesColor;
   });
 
   wizardFireball.addEventListener('click', function () {
-    var memoryWizardFireballColor = getRandomElement(WIZARD_FIREBALL_COLOR)
+    window.fireballColor = getRandomElement(WIZARD_FIREBALL_COLOR)
 
-    wizardFireball.style.backgroundColor = memoryWizardFireballColor;
-    InputFireballColor.value = memoryWizardFireballColor;
+    wizardFireball.style.backgroundColor = window.fireballColor;
+    InputFireballColor.value = window.fireballColor;
   });
 })();
