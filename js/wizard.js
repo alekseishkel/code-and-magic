@@ -22,31 +22,33 @@
   window.coatColor = inputCoatColor.value;
 
   wizardCoat.addEventListener('click', function () {
-
     window.coatColor = getRandomElement(WIZARD_COAT_COLOR);
 
     wizardCoat.style.fill = window.coatColor;
     inputCoatColor.value = window.coatColor;
-    window.wizard.onCoatChange(window.coatColor);
 
+    window.wizard.onCoatChange(window.coatColor);
   });
 
   window.eyesColor = inputEyesColor.value;
+
   wizardEyes.addEventListener('click', function () {
     window.eyesColor = getRandomElement(WIZARD_EYES_COLOR);
 
     wizardEyes.style.fill = window.eyesColor;
     inputEyesColor.value = window.eyesColor;
+    
     window.wizard.onEyesChange(window.eyesColor);
-
   });
 
 window.fireballColor = InputFireballColor.value;
+
   wizardFireball.addEventListener('click', function () {
     window.fireballColor = getRandomElement(WIZARD_FIREBALL_COLOR)
 
     wizardFireball.style.backgroundColor = window.fireballColor;
     InputFireballColor.value = window.fireballColor;
-
+    
+    window.wizard.onFireballChange(window.eyesColor);
   });
 })();

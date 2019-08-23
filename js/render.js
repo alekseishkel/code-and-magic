@@ -19,13 +19,16 @@
   var similarListElement = document.querySelector('.setup-similar-list');
 
   window.render = function (data) {
-    var fragment = document.createDocumentFragment();
+    window.fragment = document.createDocumentFragment();
 
-    for (var i = 0; i < 4; i++) {
-      fragment.appendChild(renderWizard(data[i]));
+    while (similarListElement.firstChild) {
+      similarListElement.removeChild(similarListElement.firstChild);
     }
 
-    similarListElement.appendChild(fragment);
-  };
+    for (var i = 0; i < 4; i++) {
+      window.fragment.appendChild(renderWizard(data[i]));
+    }
 
+    similarListElement.appendChild(window.fragment);
+  };
 })();

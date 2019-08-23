@@ -4,7 +4,7 @@
   var getRank = function (wizard) {
     var rank = 0;
     if (wizard.colorCoat === window.coatColor) {
-      rank += 2;
+      rank += 3;
     }
     if (wizard.colorEyes === window.eyesColor) {
       rank += 1;
@@ -36,17 +36,19 @@
     }));
   }
 
-  window.wizard.onCoatChange = function (color) {
-    window.coatColor = color;
-    updateWizards();
+  window.wizard.onCoatChange = function () {
+    window.debounce(updateWizards);
   };
-  window.wizard.onEyesChange = function (color) {
-    window.eyesColor = color;
-    updateWizards();
+
+  window.wizard.onEyesChange = function () {
+    window.debounce(updateWizards);
+  };
+
+  window.wizard.onFireballChange = function () {
+    window.debounce(updateWizards);
   };
 
   var wizards = [];
-
 
   var loadHandler = function (data) {
     wizards = data;
@@ -66,5 +68,4 @@
   });
 
   window.load(loadHandler, window.errorHandler);
-
 })();
