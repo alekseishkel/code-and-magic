@@ -1,16 +1,16 @@
 'use strict';
 
 (function () {
-  var dialogHandler = window.setup.querySelector('.setup-user-pic');
+  window.dialogHandler = window.setup.querySelector('.setup-title');
 
-  dialogHandler.addEventListener('mousedown', function (evt) {
+  window.dialogHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault;
 
     window.startCoordinats = {
       x: evt.clientX,
       y: evt.clientY
     };
-    
+
     var dragged = false;
 
     var onMouseMove = function (moveEvt) {
@@ -27,6 +27,9 @@
         y: moveEvt.clientY
       };
 
+      window.startCoordinats.x = moveEvt.clientX;
+      window.startCoordinats.y = moveEvt.clientY;
+
       window.setup.style.left = (window.setup.offsetLeft + shift.x) + 'px';
       window.setup.style.top = (window.setup.offsetTop + shift.y) + 'px';
     };
@@ -37,9 +40,9 @@
       if (dragged) {
         var onClickPreventHandler = function (evt) {
           evt.preventDefault();
-          dialogHandler.removeEventListener('click', onClickPreventHandler);
+          window.dialogHandler.removeEventListener('click', onClickPreventHandler);
         };
-        dialogHandler.addEventListener('click', onClickPreventHandler);
+        window.dialogHandler.addEventListener('click', onClickPreventHandler);
       }
 
       document.removeEventListener('mousemove', onMouseMove);
