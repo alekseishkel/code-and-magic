@@ -51,4 +51,42 @@ window.fireballColor = InputFireballColor.value;
     
     window.wizard.onFireballChange(window.eyesColor);
   });
+
+  // document.querySelector('.setup-wizard-form').addEventListener('submit', function (evt) {
+  //   evt.preventDefault();
+  //   var wizardCopy = document.querySelector('svg').cloneNode(true);
+
+  //   wizardCopy.querySelector('#wizard-coat').style.fill = wizardCoat.style.fill;
+  //   wizardCopy.querySelector('#wizard-eyes').style.fill = wizardEyes.style.fill;
+
+  //   var wizardBase64Right = window.svg2base64(wizardCopy);
+
+  //   // Чтобы развернуть мага, его надо подвинуть на его ширину, а затем отразить
+  //   wizardCopy.querySelector('#wizard').setAttribute('transform', 'translate(62, 0) scale(-1, 1)');
+  //   var wizardBase64Left = window.svg2base64(wizardCopy);
+
+  //   window.restartGame(wizardBase64Right, wizardBase64Left);
+  // });
+
+  var form = document.querySelector('.setup-wizard-form');
+  form.addEventListener('submit', function (evt) {
+    window.save(new FormData(form), function () {
+      window.setup.classList.add('hidden');
+    }, window.errorHandler);
+    evt.preventDefault();
+
+    var wizardCopy = document.querySelector('svg').cloneNode(true);
+
+    wizardCopy.querySelector('#wizard-coat').style.fill = wizardCoat.style.fill;
+    wizardCopy.querySelector('#wizard-eyes').style.fill = wizardEyes.style.fill;
+
+    var wizardBase64Right = window.svg2base64(wizardCopy);
+
+    wizardCopy.querySelector('#wizard').setAttribute('transform', 'translate(62, 0) scale(-1, 1)');
+
+    var wizardBase64Left = window.svg2base64(wizardCopy);
+
+    window.restartGame(wizardBase64Right, wizardBase64Left);
+  });
 })();
+

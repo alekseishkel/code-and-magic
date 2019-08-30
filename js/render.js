@@ -31,4 +31,5 @@
 
     similarListElement.appendChild(window.fragment);
   };
+  
 })();
