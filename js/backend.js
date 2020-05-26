@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var URL = 'https://js.dump.academy/code-and-magick';
+  var URL = 'https://javascript.pages.academy/code-and-magick';
 
   window.save = function (data, onLoad, onError) {
     var xhr = new XMLHttpRequest();
@@ -32,7 +32,7 @@
 })();
 
 (function () {
-  var URL = 'https://js.dump.academy/code-and-magick/data';
+  var URL = 'https://javascript.pages.academy/code-and-magick/data';
 
   window.load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
