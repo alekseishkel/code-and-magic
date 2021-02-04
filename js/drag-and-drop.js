@@ -27,9 +27,6 @@
         y: moveEvt.clientY
       };
 
-      window.startCoordinats.x = moveEvt.clientX;
-      window.startCoordinats.y = moveEvt.clientY;
-
       window.setup.style.left = (window.setup.offsetLeft + shift.x) + 'px';
       window.setup.style.top = (window.setup.offsetTop + shift.y) + 'px';
     };
